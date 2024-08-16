@@ -1,0 +1,65 @@
+{
+  "name": "wvic",
+  "version": "1.0.0",
+  "description": "WVIC: Wrapped Viction",
+  "repository": "git@github.com:tuphan-dn/wvic.git",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "keywords": [
+    "wrapped",
+    "viction",
+    "vrc20"
+  ],
+  "author": {
+    "name": "Tu Phan",
+    "email": "tuphan@gears.bot"
+  },
+  "license": "MIT",
+  "scripts": {
+    "prepare": "husky",
+    "compile": "hardhat compile",
+    "build": "pnpm clean && hardhat compile && pnpm build:cjs && pnpm build:esm",
+    "build:cjs": "tsc -p ./tsconfig.cjs.json && tsc-alias -p ./tsconfig.cjs.json && echo '{\"type\":\"commonjs\"}' > ./dist/cjs/package.json",
+    "build:esm": "tsc -p ./tsconfig.esm.json && tsc-alias -p ./tsconfig.esm.json && echo '{\"type\":\"module\"}' > ./dist/esm/package.json",
+    "docs": "typedoc --excludePrivate --excludeProtected src/index.ts",
+    "ci:docs": "pnpm docs && gh-pages -d docs",
+    "test": "pnpm build && REPORT_GAS=true hardhat test",
+    "test:watch": "nodemon --watch test --watch src --ext ts --exec 'pnpm test' --signal SIGTERM",
+    "clean": "rimraf ./dist ./docs"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.4.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.7",
+    "@nomicfoundation/hardhat-ignition": "^0.15.5",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^10.1.6",
+    "@types/node": "^22.3.0",
+    "dotenv": "^16.4.5",
+    "gh-pages": "^6.1.1",
+    "hardhat": "^2.22.8",
+    "husky": "^9.1.4",
+    "nodemon": "^3.1.4",
+    "rimraf": "^6.0.1",
+    "semantic-release": "^24.0.0",
+    "tsc-alias": "^1.8.10",
+    "typedoc": "^0.26.5",
+    "typescript": "^5.5.4"
+  }
+}
