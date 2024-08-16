@@ -1,0 +1,14 @@
+# dev
+.github
+.husky
+
+# source
+/src
+/contracts
+/ignition
+/test
+
+# build
+/docs
+/cache
+/artifacts
