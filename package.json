@@ -1,5 +1,5 @@
 {
-  "name": "wvic",
+  "name": "@gears-bot/wvic",
   "version": "1.0.0",
   "description": "WVIC: Wrapped Viction",
   "repository": "git@github.com:tuphan-dn/wvic.git",
@@ -36,6 +36,7 @@
     "build:cjs": "tsc -p ./tsconfig.cjs.json && tsc-alias -p ./tsconfig.cjs.json && echo '{\"type\":\"commonjs\"}' > ./dist/cjs/package.json",
     "build:esm": "tsc -p ./tsconfig.esm.json && tsc-alias -p ./tsconfig.esm.json && echo '{\"type\":\"module\"}' > ./dist/esm/package.json",
     "ci:docs": "typedoc --excludePrivate --excludeProtected src/index.ts",
+    "ci:release": "semantic-release",
     "test": "pnpm build && REPORT_GAS=true hardhat test",
     "test:watch": "nodemon --watch test --watch src --ext ts --exec 'pnpm test' --signal SIGTERM",
     "clean": "rimraf ./dist ./docs"
