@@ -35,7 +35,7 @@
     "build": "pnpm clean && hardhat compile && pnpm build:cjs && pnpm build:esm",
     "build:cjs": "tsc -p ./tsconfig.cjs.json && tsc-alias -p ./tsconfig.cjs.json && echo '{\"type\":\"commonjs\"}' > ./dist/cjs/package.json",
     "build:esm": "tsc -p ./tsconfig.esm.json && tsc-alias -p ./tsconfig.esm.json && echo '{\"type\":\"module\"}' > ./dist/esm/package.json",
-    "build:docs": "typedoc --excludePrivate --excludeProtected src/index.ts",
+    "build:docs": "typedoc --includeVersion --excludePrivate --excludeProtected src/index.ts",
     "ci:docs": "pnpm compile && pnpm build:docs",
     "ci:release": "semantic-release",
     "test": "pnpm build && REPORT_GAS=true hardhat test",
