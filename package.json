@@ -38,7 +38,7 @@
     "build:docs": "typedoc --includeVersion --excludePrivate --excludeProtected src/index.ts",
     "ci:docs": "pnpm compile && pnpm build:docs",
     "ci:release": "semantic-release",
-    "test": "pnpm build && REPORT_GAS=true hardhat test",
+    "test": "pnpm build && hardhat test",
     "test:watch": "nodemon --watch test --watch src --ext ts --exec 'pnpm test' --signal SIGTERM",
     "clean": "rimraf ./dist ./docs"
   },
